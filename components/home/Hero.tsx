@@ -21,7 +21,7 @@ export function Hero() {
         <div className="absolute inset-y-0 left-[53.6%] w-2 -skew-x-[14deg] bg-brand-gradient" />
       </div>
 
-      <Container className="grid items-center gap-y-12 pb-20 pt-[calc(var(--header-h)+48px)] sm:pb-24 md:pt-[calc(var(--header-h)+72px)] lg:grid-cols-12 lg:gap-x-10 lg:pb-32 lg:pt-[calc(var(--header-h)+104px)]">
+      <Container className="grid grid-cols-1 items-center gap-y-12 pb-20 pt-[calc(var(--header-h)+48px)] sm:pb-24 md:pt-[calc(var(--header-h)+72px)] lg:grid-cols-12 lg:gap-x-10 lg:pb-32 lg:pt-[calc(var(--header-h)+104px)]">
         <div className="lg:col-span-6">
           <p className="animate-fade-up flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.18em] text-brand-teal-200">
             <span aria-hidden="true" className="h-0.5 w-7 rounded-full bg-brand-teal-200" />

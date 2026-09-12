@@ -18,7 +18,7 @@ export function SignInAside({ className }: { className?: string }) {
         <div className="absolute inset-y-0 left-[58%] w-[110%] -skew-x-[14deg] bg-[linear-gradient(180deg,#0b4ec2_0%,#0842b0_45%,#0033a1_100%)]" />
       </div>
 
-      <div className="flex flex-1 flex-col justify-between gap-10 px-10 py-10 xl:px-14 xl:py-12">
+      <div className="mx-auto flex w-full max-w-[600px] flex-1 flex-col justify-between gap-10 px-10 py-10 xl:px-14 xl:py-12">
         <p className="flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.18em] text-brand-teal-200">
           <span aria-hidden="true" className="h-0.5 w-7 rounded-full bg-brand-teal-200" />
           I&amp;M Merchant Portal

@@ -55,6 +55,17 @@
   );
 }
 
+/* Merchant avatar gradient. Darker than the brand gradient so white
+   initials stay above 4.5:1 across the whole ramp. */
+@utility bg-identity-gradient {
+  background-color: var(--color-brand-teal-700);
+  background-image: linear-gradient(
+    251deg,
+    var(--color-brand-teal-700) 18%,
+    var(--color-brand-azure) 96%
+  );
+}
+
 /* Deep blue footer gradient built from official brand colours. */
 @utility bg-footer-gradient {
   background-image: linear-gradient(
@@ -67,6 +78,15 @@
 /* Switches focus rings to white inside dark, brand-blue surfaces. */
 @utility on-dark {
   --focus-ring: #ffffff;
+}
+
+/* Authenticated merchant portal canvas. */
+@utility portal-canvas {
+  background-color: #eef1f8;
+  background-image:
+    radial-gradient(120% 60% at 85% -10%, rgb(0 51 161 / 0.09), transparent 60%),
+    radial-gradient(90% 50% at 0% 0%, rgb(0 152 167 / 0.07), transparent 55%);
+  background-attachment: fixed;
 }
 
 @layer base {
@@ -166,9 +186,25 @@
   }
 }
 
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .animate-fade-up {
     animation: fade-up 0.8s var(--ease-out-quint) both;
+  }
+
+  /* Short and purposeful — a panel arriving, not a page revealing itself. */
+  .animate-drawer-in {
+    animation: drawer-in 0.22s var(--ease-out-quint) both;
   }
 
   @supports (animation-timeline: view()) {

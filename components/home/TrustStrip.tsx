@@ -16,7 +16,7 @@ export function TrustStrip() {
             className="pointer-events-none absolute inset-y-0 left-[60.6%] -z-10 hidden w-2 -skew-x-[14deg] bg-brand-gradient lg:block"
           />
 
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
             <div className="lg:col-span-7">
               <h2
                 id="trust-heading"

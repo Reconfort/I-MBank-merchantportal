@@ -33,7 +33,7 @@ export function AboutSection() {
       className="bg-white py-24 outline-none lg:py-32"
     >
       <Container>
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
           <SectionHeading
             id="about-heading"
             eyebrow={"About I&M Merchant Services"}

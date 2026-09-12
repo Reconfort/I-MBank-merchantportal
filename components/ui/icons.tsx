@@ -183,3 +183,193 @@ export function SpinnerIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function BellIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M18 9.5a6 6 0 1 0-12 0c0 3.5-.9 5.3-1.7 6.2a.75.75 0 0 0 .55 1.25h14.3a.75.75 0 0 0 .55-1.25c-.8-.9-1.7-2.7-1.7-6.2Z" />
+      <path d="M10 20.25a2.4 2.4 0 0 0 4 0" />
+    </Icon>
+  );
+}
+
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m6 9.5 6 6 6-6" />
+    </Icon>
+  );
+}
+
+export function SearchIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4 4" />
+    </Icon>
+  );
+}
+
+export function CalendarIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
+      <path d="M3.5 10h17M8 3.5v4M16 3.5v4" />
+    </Icon>
+  );
+}
+
+export function LogoutIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M14.5 4.5h3.25A1.75 1.75 0 0 1 19.5 6.25v11.5a1.75 1.75 0 0 1-1.75 1.75H14.5" />
+      <path d="M10 8.5 6.5 12l3.5 3.5" />
+      <path d="M6.5 12h8" />
+    </Icon>
+  );
+}
+
+export function UserIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="8.5" r="3.75" />
+      <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+    </Icon>
+  );
+}
+
+export function BuildingIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4.5 20V5.5A1.5 1.5 0 0 1 6 4h7a1.5 1.5 0 0 1 1.5 1.5V20" />
+      <path d="M14.5 9.5H18A1.5 1.5 0 0 1 19.5 11v9" />
+      <path d="M3.5 20h17M8 8h3M8 12h3M8 16h3" />
+    </Icon>
+  );
+}
+
+export function TerminalIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="5.5" y="2.5" width="13" height="19" rx="2.5" />
+      <rect x="8.5" y="5.5" width="7" height="4.5" rx="1" />
+      <path d="M9 14h.01M12 14h.01M15 14h.01M9 17.5h.01M12 17.5h.01M15 17.5h.01" />
+    </Icon>
+  );
+}
+
+export function CardIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
+      <path d="M3 10h18M6.5 14.5h3" />
+    </Icon>
+  );
+}
+
+export function CheckCircleIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8.5 12 2.4 2.4L15.5 9.8" />
+    </Icon>
+  );
+}
+
+export function XCircleIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6" />
+    </Icon>
+  );
+}
+
+export function ClockIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5V12l3 1.8" />
+    </Icon>
+  );
+}
+
+export function UndoIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4.5 9.5h9a5 5 0 0 1 0 10H9" />
+      <path d="m8 5.5-3.5 4L8 13" />
+    </Icon>
+  );
+}
+
+export function CloseIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m6.5 6.5 11 11M17.5 6.5l-11 11" />
+    </Icon>
+  );
+}
+
+export function MenuIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4.5 7.5h15M4.5 12h15M4.5 16.5h9" />
+    </Icon>
+  );
+}
+
+export function SlidersIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4.5 7.5h9M17.5 7.5h2M4.5 16.5h3M11.5 16.5h8" />
+      <circle cx="15" cy="7.5" r="2.2" />
+      <circle cx="9" cy="16.5" r="2.2" />
+    </Icon>
+  );
+}
+
+export function RefreshIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M19.5 12a7.5 7.5 0 1 1-2.6-5.7" />
+      <path d="M19.5 4.5V9h-4.5" />
+    </Icon>
+  );
+}
+
+export function ArrowUpRightIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M7.5 16.5 16.5 7.5" />
+      <path d="M9 7.5h7.5V15" />
+    </Icon>
+  );
+}
+
+export function TrendUpIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m4.5 15.5 5-5 3.5 3.5 6-6.5" />
+      <path d="M14.5 7.5h5v5" />
+    </Icon>
+  );
+}
+
+export function TrendDownIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m4.5 8.5 5 5 3.5-3.5 6 6.5" />
+      <path d="M14.5 16.5h5v-5" />
+    </Icon>
+  );
+}
+
+export function DocumentIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M6.5 3.5h7L18 8v12.5H6.5z" />
+      <path d="M13 3.5V8h4.5M9.5 12.5h5M9.5 16h5" />
+    </Icon>
+  );
+}
