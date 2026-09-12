@@ -52,7 +52,6 @@ Other scripts: `npm run build`, `npm run start`, `npm run lint`.
 | `NEXT_PUBLIC_SITE_URL`    | Prod     | Public origin, used for canonical URLs, Open Graph, sitemap and robots.      |
 | `MERCHANT_AUTH_API_URL`   | Prod     | Server-side endpoint that verifies merchant credentials.                     |
 | `MERCHANT_API_URL`        | Prod     | Server-side merchant reporting API (dashboard, transactions, account).       |
-| `MERCHANT_PORTAL_PREVIEW` | Never    | `true` opens the portal with clearly-labelled sample data. Local review only. |
 
 ## Merchant authentication
 
@@ -61,8 +60,9 @@ There is **no mock authentication**. The form validates input, then calls the
 delegates to `authenticateMerchant` in `lib/auth/merchant-auth.ts` — the single
 integration point for the real API.
 
-- Without `MERCHANT_AUTH_API_URL`, sign-in fails safely with a “service
-  unavailable” message.
+- Without `MERCHANT_AUTH_API_URL`, any form-valid Merchant ID and password
+  opens a preview session with sample data. The Sign In button stays disabled
+  until both fields pass presence and length checks.
 - With it set, the credentials are POSTed as JSON
   (`{ merchantId, password, rememberMe }`) and HTTP statuses are mapped to
   user-facing messages (401 → incorrect details, 423 → locked, 429 → too many
@@ -86,8 +86,9 @@ three states per request:
 | `unavailable` | No API and no preview session   | Returns an error state; no data is invented                |
 
 Preview mode exists so the portal can be reviewed before the API is ready. It is
-gated by `MERCHANT_PORTAL_PREVIEW=true` **and** the absence of a real API, banners
-every screen with “Preview mode — sample data”, and must stay off in production.
+on whenever the authentication API is unset, banners every screen with
+“Preview mode — sample data”, and turns off as soon as `MERCHANT_AUTH_API_URL`
+is configured.
 
 When wiring the real API, map its payloads onto the types in
 `lib/merchant/types.ts` (see the `TODO(integration)` note in `requestApi`); no

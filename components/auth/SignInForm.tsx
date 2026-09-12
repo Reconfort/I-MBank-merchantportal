@@ -57,6 +57,8 @@ export function SignInForm() {
   const passwordId = useId();
   const resetHelpId = useId();
   const formErrorId = useId();
+  const isFormValid = validateSignIn(values).success;
+  const canSubmit = isFormValid && !isPending;
 
   const handleTextChange =
     (field: SignInField) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +73,7 @@ export function SignInForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (isPending) return;
+    if (!canSubmit) return;
 
     setHasSubmitted(true);
     setFormError(null);
@@ -227,7 +229,7 @@ export function SignInForm() {
         size="lg"
         fullWidth
         className="mt-7"
-        aria-disabled={isPending || undefined}
+        disabled={!canSubmit}
       >
         {isPending ? (
           <>

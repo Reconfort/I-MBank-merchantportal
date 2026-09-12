@@ -2,7 +2,7 @@ import "server-only";
 
 import { contact } from "@/lib/site";
 
-import { isPreviewMode, PREVIEW_MERCHANT, PREVIEW_SESSION_TTL_MS } from "./preview";
+import { PREVIEW_REMEMBER_TTL_MS, PREVIEW_SESSION_TTL_MS } from "./preview";
 import { createSession } from "./session";
 import type { SignInInput, SignInResult } from "./types";
 
@@ -10,9 +10,8 @@ import type { SignInInput, SignInResult } from "./types";
  * Merchant authentication — the single integration point for the real API.
  *
  * Configure `MERCHANT_AUTH_API_URL` (server-side only) with the endpoint that
- * verifies merchant credentials. Until it is set, sign-in either fails safely
- * with a "service unavailable" message or, when `MERCHANT_PORTAL_PREVIEW=true`,
- * opens a clearly-labelled preview session backed by sample data.
+ * verifies merchant credentials. Until it is set, any form-valid Merchant ID
+ * and password opens a clearly-labelled preview session backed by sample data.
  *
  * The request/response mapping below is a placeholder contract. Align it with
  * the I&M merchant authentication API once its specification is available.
@@ -65,24 +64,20 @@ export async function authenticateMerchant(
   const endpoint = process.env.MERCHANT_AUTH_API_URL;
 
   if (!endpoint) {
-    if (isPreviewMode()) {
-      // Preview mode: no credentials are verified and no live data is shown.
-      console.warn(
-        "[merchant-auth] Preview mode is enabled — opening a sample-data session.",
-      );
-      await createSession({
-        merchantId: PREVIEW_MERCHANT.merchantId,
-        businessName: PREVIEW_MERCHANT.businessName,
-        preview: true,
-        expiresAt: Date.now() + PREVIEW_SESSION_TTL_MS,
-      });
-      return { ok: true, redirectTo: DEFAULT_REDIRECT };
-    }
-
     console.warn(
-      "[merchant-auth] MERCHANT_AUTH_API_URL is not configured — merchant sign-in is unavailable.",
+      "[merchant-auth] Preview mode is enabled — opening a sample-data session.",
     );
-    return { ok: false, code: "unavailable", message: MESSAGES.unavailable };
+    await createSession({
+      merchantId: credentials.merchantId,
+      businessName: credentials.merchantId,
+      preview: true,
+      expiresAt:
+        Date.now() +
+        (credentials.rememberMe
+          ? PREVIEW_REMEMBER_TTL_MS
+          : PREVIEW_SESSION_TTL_MS),
+    });
+    return { ok: true, redirectTo: DEFAULT_REDIRECT };
   }
 
   let response: Response;
