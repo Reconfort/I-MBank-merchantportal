@@ -6,16 +6,51 @@
  * Do not add contact details that are not published there.
  */
 
+const FALLBACK_ORIGIN = "http://localhost:3000";
+
+/**
+ * Resolves a usable public origin for metadata, sitemap and robots.
+ *
+ * An empty `NEXT_PUBLIC_SITE_URL` (common when the Vercel import copies
+ * `.env.example`) is treated as unset. Hostnames without a protocol are
+ * accepted. On Vercel, the platform-provided deployment host is the fallback.
+ */
+function resolveSiteUrl(): string {
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ];
+
+  for (const candidate of candidates) {
+    const origin = normalizeOrigin(candidate);
+    if (origin) return origin;
+  }
+
+  return FALLBACK_ORIGIN;
+}
+
+function normalizeOrigin(value: string | undefined): string | null {
+  if (!value) return null;
+  const trimmed = value.trim().replace(/\/+$/, "");
+  if (!trimmed) return null;
+  const withProtocol = /^https?:\/\//i.test(trimmed)
+    ? trimmed
+    : `https://${trimmed}`;
+  try {
+    return new URL(withProtocol).origin;
+  } catch {
+    return null;
+  }
+}
+
 export const siteConfig = {
   name: "I&M Bank Merchant Services",
   title: "I&M Bank Merchant Services | Rwanda",
   description:
     "Discover I&M Bank merchant payment solutions designed to help businesses accept payments and manage their business with confidence.",
   /** Public origin of the site. Used for canonical URLs, Open Graph and the sitemap. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
-    /\/+$/,
-    "",
-  ),
+  url: resolveSiteUrl(),
   locale: "en_RW",
   ogImage: {
     url: "/og-image.png",
