@@ -21,6 +21,10 @@ export function formatCompactAmount(
   return `${currency} ${compactFormatter.format(value)}`;
 }
 
+export function formatCompactNumber(value: number): string {
+  return compactFormatter.format(value);
+}
+
 export function formatPercent(value: number, fractionDigits = 1): string {
   return `${value.toFixed(fractionDigits)}%`;
 }

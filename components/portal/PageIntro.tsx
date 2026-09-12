@@ -30,10 +30,12 @@ export function PageIntro({
           <p className="mt-2 text-base leading-relaxed text-muted">{description}</p>
         ) : null}
       </div>
-      <div className="flex shrink-0 flex-col items-start gap-2 lg:items-end">
+      <div className="flex w-full shrink-0 flex-col items-stretch gap-2 sm:w-auto sm:items-start lg:items-end">
         {aside}
         {meta ? (
-          <p className="text-[13px] font-medium text-muted lg:pr-1.5">{meta}</p>
+          <p className="text-[13px] font-medium text-muted sm:px-1.5 lg:pr-1.5">
+            {meta}
+          </p>
         ) : null}
       </div>
     </div>

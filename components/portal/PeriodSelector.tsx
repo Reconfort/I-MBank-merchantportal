@@ -56,11 +56,11 @@ export function PeriodSelector({
   const today = toInputDate(new Date());
 
   return (
-    <div className="relative">
+    <div className="relative w-full sm:w-auto">
       <div
         role="group"
         aria-label="Reporting period"
-        className="flex flex-wrap items-center gap-1 rounded-full border border-[#e4e9f2] bg-white/95 p-1.5 shadow-[0_10px_30px_-24px_rgb(4_19_51/0.6)]"
+        className="flex w-full items-center gap-0.5 rounded-full border border-[#e4e9f2] bg-white/95 p-1 shadow-[0_10px_30px_-24px_rgb(4_19_51/0.6)] sm:w-auto sm:gap-1 sm:p-1.5"
       >
         {PERIOD_OPTIONS.map((option) => {
           const active = option.key === periodKey;
@@ -71,17 +71,23 @@ export function PeriodSelector({
               ref={isCustom ? triggerRef : undefined}
               type="button"
               onClick={() => selectPeriod(option.key)}
+              aria-label={isCustom ? "Custom range" : undefined}
               aria-pressed={active}
               aria-expanded={isCustom ? open : undefined}
               className={cn(
-                "inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-bold transition-colors duration-200",
+                "inline-flex h-8 items-center justify-center gap-1.5 rounded-full text-[12px] font-bold transition-colors duration-200 sm:h-9 sm:text-[13px]",
+                isCustom
+                  ? "w-8 shrink-0 px-0 sm:w-auto sm:px-4"
+                  : "min-w-0 flex-1 px-1 sm:flex-none sm:px-4",
                 active
                   ? "bg-brand-blue text-white shadow-[0_8px_18px_-10px_rgb(0_51_161/0.9)]"
                   : "text-body hover:bg-brand-mist hover:text-brand-blue",
               )}
             >
-              {isCustom ? <CalendarIcon className="size-4" /> : null}
-              {option.label}
+              {isCustom ? <CalendarIcon className="size-4 shrink-0" /> : null}
+              <span className={isCustom ? "sr-only sm:not-sr-only" : "truncate"}>
+                {option.label}
+              </span>
             </button>
           );
         })}
@@ -90,7 +96,7 @@ export function PeriodSelector({
       <div
         ref={panelRef}
         className={cn(
-          "absolute right-0 top-[calc(100%+10px)] z-30 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-[#e4e9f2] bg-white p-4 shadow-[0_30px_60px_-25px_rgb(4_19_51/0.45)] transition-[opacity,transform,visibility] duration-200 ease-out-quint",
+          "absolute inset-x-0 top-[calc(100%+10px)] z-30 w-full rounded-2xl border border-[#e4e9f2] bg-white p-4 shadow-[0_30px_60px_-25px_rgb(4_19_51/0.45)] transition-[opacity,transform,visibility] duration-200 ease-out-quint sm:inset-x-auto sm:right-0 sm:w-[min(20rem,calc(100vw-2rem))]",
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-1 opacity-0",

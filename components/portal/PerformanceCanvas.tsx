@@ -96,7 +96,10 @@ export function PerformanceCanvas({
         <div className="lg:col-span-7">
           {hasActivity ? (
             <div className="-mx-6 sm:-mx-8 lg:-mr-2">
-              <ActivityChart buckets={activity} />
+              <ActivityChart
+                buckets={activity}
+                granularity={period.granularity}
+              />
             </div>
           ) : (
             <div className="flex h-full min-h-[220px] flex-col items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-10 text-center">
