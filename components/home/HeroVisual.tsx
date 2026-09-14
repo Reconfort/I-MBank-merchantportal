@@ -38,7 +38,7 @@ export function HeroVisual() {
         aria-hidden="true"
         className="pointer-events-none absolute -inset-x-[40%] -bottom-28 top-0 -z-10 [mask-image:linear-gradient(to_bottom,transparent,black_40%)] lg:hidden"
       >
-        <div className="absolute inset-y-0 left-[46%] w-full -skew-x-[14deg] bg-[linear-gradient(180deg,#0b4ec2_0%,#0842b0_45%,#0033a1_100%)]" />
+        <div className="absolute inset-y-0 left-[46%] w-full -skew-x-[14deg] bg-[linear-gradient(180deg,#ffffff_0%,#eef3fb_55%,#e8eef8_100%)]" />
         <div className="absolute inset-y-0 left-[45%] w-1.5 -skew-x-[14deg] bg-brand-gradient" />
       </div>
       <svg
